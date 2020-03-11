@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DnaLibrary Name="ВитГеоГрупп" RuntimeVersion="v4.0" xmlns="http://schemas.excel-dna.net/addin/2018/05/dnalibrary">
+  <ExternalLibrary Path="ExcelAddin.dll" ComServer="true" ExplicitExports="false" LoadFromBytes="true" Pack="true" IncludePdb="false" />
+  <Reference Path="External.dll" Pack="true" />
+
+  <CustomUI>
+    <customUI xmlns='http://schemas.microsoft.com/office/2009/07/customui'>
+      <ribbon>
+        <tabs>
+          <tab id='GetPlatformMainGroup' label='ВитГеоГрупп'>
+          </tab>
+        </tabs>
+      </ribbon>
+    </customUI>
+  </CustomUI>
+</DnaLibrary>
