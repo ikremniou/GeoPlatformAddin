@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <BuildDependsOn>
+      AfterBuildPutPackedAddinsToOutput
+    </BuildDependsOn>
+  </PropertyGroup>
+
+  <Target Name="AfterBuildPutPackedAddinsToOutput" AfterTargets="ExcelDnaPack">
+    <ItemGroup>
+      <AddinPackedFiles Include="$(SolutionDir)build\$(ConfigurationName)\*$(ExcelDnaPackXllSuffix).xll"/>
+    </ItemGroup>
+    <Message Text="Removing the old packaged directory." Importance="High" />
+    <RemoveDir Directories="$(SolutionDir)build\packged"/>
+    <Message Text="Copying the packed files to the output directory." Importance="High" />
+    <Copy SourceFiles="@(AddinPackedFiles)" DestinationFolder="$(SolutionDir)build\packged" />
+    <Message Text="Version: $(Version)" Importance="High" />
+  </Target>
+</Project>
