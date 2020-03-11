@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="AddinSetup" Language="1033" Version="1.0.0.0" Manufacturer="Ilya Kremniou" UpgradeCode="eb72da82-9661-4c35-80b9-9e9c957d04c9">
+  <Product Id="*" Name="ВитГеоГрупп для Microsoft Office" Language="1033" Codepage="utf-8"
+           Version="1.0.0.0" Manufacturer="Ilya Kremniou" UpgradeCode="EB72DA82-9661-4C35-80B9-9E9C957D04C9">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes"/>
@@ -8,7 +9,14 @@
       <ComponentRef Id="comp_74143FDB_9FFC_4D68_B53F_65222F316E49" />
       <ComponentRef Id="comp_9884BB19_182F_4EA5_AB4F_5BD00227B226" />
     </Feature>
+    <CustomAction Id="SetTARGETDIR" Directory="TARGETDIR" Value="[AppDataFolder]\Microsoft\Excel\XLSTART" Return="check" />
+    <InstallExecuteSequence>
+      <Custom Action="SetTARGETDIR" After="InstallValidate" />
+    </InstallExecuteSequence>
+    <Icon Id="addin.ico" SourceFile="Resources\addin.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="addin.ico" />
   </Product>
+
   <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Component Id="comp_74143FDB_9FFC_4D68_B53F_65222F316E49" Guid="1FC39128-5222-471F-965F-27CED5829458" Permanent="no" SharedDllRefCount="no" Transitive="no">
