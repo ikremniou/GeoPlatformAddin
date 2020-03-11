@@ -5,9 +5,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>66ae01b1-f453-498b-935b-53cfe0dd1975</ProjectGuid>
+    <ProjectGuid>38288630-44c5-48c6-8ce6-8b42bd2393fa</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>AddinSetup</OutputName>
+    <OutputName>ВитГеоГрупп-Excel</OutputName>
     <OutputType>Package</OutputType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>

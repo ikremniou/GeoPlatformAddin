@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="AddinSetup" Language="1033" Version="1.0.0.0" 
-           Manufacturer="Ilya Kremniou" UpgradeCode="05f27bf2-23fa-4418-b7f3-4dc4f0ca147d">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
-
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
-
-		<Feature Id="ProductFeature" Title="AddinSetup" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-		</Feature>
-	</Product>
-
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="AddinSetup" />
-			</Directory>
-		</Directory>
-	</Fragment>
-
-	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="$(var.MyProject.ProjectDir)">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
-		</ComponentGroup>
-	</Fragment>
+  <Product Id="*" Name="AddinSetup" Language="1033" Version="1.0.0.0" Manufacturer="Ilya Kremniou" UpgradeCode="eb72da82-9661-4c35-80b9-9e9c957d04c9">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes"/>
+    <Feature Id="ProductFeature" Title="AddinSetup" Level="1">
+      <ComponentRef Id="comp_74143FDB_9FFC_4D68_B53F_65222F316E49" />
+      <ComponentRef Id="comp_9884BB19_182F_4EA5_AB4F_5BD00227B226" />
+    </Feature>
+  </Product>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Component Id="comp_74143FDB_9FFC_4D68_B53F_65222F316E49" Guid="1FC39128-5222-471F-965F-27CED5829458" Permanent="no" SharedDllRefCount="no" Transitive="no">
+        <File Id="_5704739D_B8B1_4D48_9BF0_85EF5E8E3A0B" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="GeoPlarfromx64-packed.xll" Source="..\build\packged\GeoPlarfromx64-packed.xll" KeyPath="yes" />
+      </Component>
+      <Component Id="comp_9884BB19_182F_4EA5_AB4F_5BD00227B226" Guid="9465C7B8-1EBF-4E59-9819-9B7BDFF3D24C" Permanent="no" SharedDllRefCount="no" Transitive="no">
+        <File Id="_01F87FC2_30CE_4BE2_A2A9_A43CF7C4575B" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="GeoPlarfromx86-packed.xll" Source="..\build\packged\GeoPlarfromx86-packed.xll" KeyPath="yes" />
+      </Component>
+    </Directory>
+  </Fragment>
+  <Fragment>
+  </Fragment>
 </Wix>
