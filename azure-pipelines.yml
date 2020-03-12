@@ -40,7 +40,6 @@ steps:
   displayName: 'Generating Addin installer'
   inputs:
     solution: '$(installerProject)'
-    platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/p:Version=$(version)'
     
