@@ -14,20 +14,33 @@ variables:
   minor: 0
   patch: $[counter(variables['minor'], 0)]
   solution: '**/*.sln'
+  installerProject: '**/*.wixproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   version: $[format('{0}.{1}.{2}', variables.major, variables.minor, variables.patch)]
 
 steps:
 - task: NuGetToolInstaller@1
+  displayName: 'Installing NuGet tool' 
 
 - task: NuGetCommand@2
+  displayName: 'Restoring NuGet packages' 
   inputs:
     restoreSolution: '$(solution)'
 
 - task: VSBuild@1
+  displayName: 'Building GeoPlatfrom Addin' 
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     msbuildArgs: '/p:Version=$(version)'
+
+- task: MSBuild@1
+  displayName: 'Generating Addin installer'
+  inputs:
+    solution: '$(installerProject)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/p:Version=$(version)'
+    
