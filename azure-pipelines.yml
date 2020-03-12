@@ -42,4 +42,10 @@ steps:
     solution: '$(installerProject)'
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/p:Version=$(version)'
+
+- task: PublishPipelineArtifact@1
+  displayName: 'Publishing the addin installer'
+  inputs:
+    targetPath: '$(Pipeline.Workspace)\build\installer'
+    publishLocation: 'pipeline'
     
