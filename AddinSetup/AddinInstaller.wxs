@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Id="*" Name="ВитГеоГрупп для Microsoft Office" Language="1033" Codepage="utf-8"
            Version="1.0.0.0" Manufacturer="Ilya Kremniou" UpgradeCode="EB72DA82-9661-4C35-80B9-9E9C957D04C9">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
@@ -16,7 +16,6 @@
     <Icon Id="addin.ico" SourceFile="Resources\addin.ico"/>
     <Property Id="ARPPRODUCTICON" Value="addin.ico" />
   </Product>
-
   <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Component Id="comp_74143FDB_9FFC_4D68_B53F_65222F316E49" Guid="1FC39128-5222-471F-965F-27CED5829458" Permanent="no" SharedDllRefCount="no" Transitive="no">
@@ -28,5 +27,37 @@
     </Directory>
   </Fragment>
   <Fragment>
+    <WixVariable 
+      Id="WixMbaPrereqPackageId" 
+      Value="Netfx4Full" />
+    <WixVariable 
+      Id="WixMbaPrereqLicenseUrl" 
+      Value="NetfxLicense.rtf" />
+ 
+    <util:RegistrySearch 
+      Root="HKLM" 
+      Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full" 
+      Value="Version" 
+      Variable="Netfx4FullVersion" />
+    <util:RegistrySearch 
+      Root="HKLM" 
+      Key="SOFTWARE\Microsoft\Net Framework Setup\NDP\v4\Full" 
+      Value="Version" 
+      Variable="Netfx4x64FullVersion" 
+      Win64="yes" />
+ 
+    <PackageGroup 
+      Id="Netfx4Full">
+      <ExePackage 
+        Id="Netfx4Full" 
+        Cache="no" 
+        Compressed="no" 
+        PerMachine="yes" 
+        Permanent="yes" 
+        Vital="yes" 
+        SourceFile="dotNetFx40_Full_x86_x64.exe"
+        DownloadUrl="http://go.microsoft.com/fwlink/?LinkId=164193"
+        DetectCondition="Netfx4FullVersion AND (NOT VersionNT64 OR Netfx4x64FullVersion)" />
+    </PackageGroup>
   </Fragment>
 </Wix>
