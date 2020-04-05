@@ -12,6 +12,7 @@
     <OutputType>Bundle</OutputType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <DefineSolutionProperties>false</DefineSolutionProperties>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
