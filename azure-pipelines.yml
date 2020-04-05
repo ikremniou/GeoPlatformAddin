@@ -14,7 +14,8 @@ variables:
   minor: 0
   patch: $[counter(variables['minor'], 0)]
   solution: '**/*.sln'
-  installerProject: '**/*.wixproj'
+  installerProject: '**/WixAddinSetup.wixproj'
+  bundleProject: '**/WixBundleSetup.wixproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   version: $[format('{0}.{1}.{2}', variables.major, variables.minor, variables.patch)]
@@ -37,15 +38,22 @@ steps:
     msbuildArgs: '/p:Version=$(version)'
 
 - task: MSBuild@1
-  displayName: 'Generating Addin installer'
+  displayName: 'Generating Excel installer'
   inputs:
     solution: '$(installerProject)'
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/p:Version=$(version)'
+
+- task: MSBuild@1
+  displayName: 'Generating Addin bundle'
+  inputs:
+    solution: '$(bundleProject)'
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/p:Version=$(version)'
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publishing the addin installer'
   inputs:
-    targetPath: '$(Build.SourcesDirectory)\build\installer'
+    targetPath: '$(Build.SourcesDirectory)\dist'
+    artifactName: 'GetPlatfromAddin-$(version)'
     publishLocation: 'pipeline'
-    
