@@ -46,6 +46,6 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: 'Publishing the addin installer'
   inputs:
-    targetPath: '$(Pipeline.Workspace)\build\installer'
+    targetPath: '$(Build.SourcesDirectory)\build\installer'
     publishLocation: 'pipeline'
     
