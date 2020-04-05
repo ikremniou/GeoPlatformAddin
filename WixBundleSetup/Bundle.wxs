@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
-  <Bundle Name="ВитГеоГрупп для Microsoft Office" Version="$(var.ProductVersion)" Manufacturer="Ilya Kremniou" 
+  <Bundle Name="ВитГеоГрупп для Microsoft Office" Version="$(var.Version)" Manufacturer="Ilya Kremniou" 
           UpgradeCode="160d31eb-ecd4-4734-ae8a-663e068b8b42" 
           IconSourceFile="Resources\addin.ico">
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkLicense">
