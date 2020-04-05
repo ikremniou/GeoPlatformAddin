@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="ВитГеоГрупп для Microsoft Office" Language="1033" Codepage="utf-8"
-           Version="1.0.0.0" Manufacturer="Ilya Kremniou" UpgradeCode="EB72DA82-9661-4C35-80B9-9E9C957D04C9">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Product Id="011ECEEF-0630-4FD1-AB3B-1F7E3B6B25FA" Name="ВитГеоГрупп для Microsoft Office" Language="1033" 
+           Codepage="utf-8" Version="1.0.0" Manufacturer="Ilya Kremniou" UpgradeCode="EB72DA82-9661-4C35-80B9-9E9C957D04C9">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-    <MediaTemplate EmbedCab="yes"/>
+    <MediaTemplate EmbedCab="yes" />
     <Feature Id="ProductFeature" Title="AddinSetup" Level="1">
       <ComponentRef Id="comp_74143FDB_9FFC_4D68_B53F_65222F316E49" />
       <ComponentRef Id="comp_9884BB19_182F_4EA5_AB4F_5BD00227B226" />
@@ -13,10 +13,8 @@
     <InstallExecuteSequence>
       <Custom Action="SetTARGETDIR" After="InstallValidate" />
     </InstallExecuteSequence>
-    <Icon Id="addin.ico" SourceFile="Resources\addin.ico"/>
     <Property Id="ARPPRODUCTICON" Value="addin.ico" />
   </Product>
-
   <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Component Id="comp_74143FDB_9FFC_4D68_B53F_65222F316E49" Guid="1FC39128-5222-471F-965F-27CED5829458" Permanent="no" SharedDllRefCount="no" Transitive="no">
@@ -26,7 +24,5 @@
         <File Id="_01F87FC2_30CE_4BE2_A2A9_A43CF7C4575B" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="GeoPlarfromx86-packed.xll" Source="..\build\packged\GeoPlarfromx86-packed.xll" KeyPath="yes" />
       </Component>
     </Directory>
-  </Fragment>
-  <Fragment>
   </Fragment>
 </Wix>
