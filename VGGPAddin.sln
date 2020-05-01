@@ -1,13 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1062
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelAddin", "ExcelAddin\ExcelAddin.csproj", "{7671AD4B-03EB-41F7-B85C-94B901E8D340}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "External", "External\External.csproj", "{AB018749-6F17-4ABA-8009-CE7D97B96B62}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "WixBundleSetup", "WixBundleSetup\WixBundleSetup.wixproj", "{160D31EB-ECD4-4734-AE8A-663E068B8B42}"
+	ProjectSection(ProjectDependencies) = postProject
+		{38288630-44C5-48C6-8CE6-8B42BD2393FA} = {38288630-44C5-48C6-8CE6-8B42BD2393FA}
+	EndProjectSection
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "WixAddinSetup", "WixAddinSetup\WixAddinSetup.wixproj", "{38288630-44C5-48C6-8CE6-8B42BD2393FA}"
 EndProject
